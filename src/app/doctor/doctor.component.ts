@@ -3,11 +3,11 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import {FirebaseUISignInSuccess} from 'firebaseui-angular';
 
 @Component({
-  selector: 'app-second-page',
-  templateUrl: './second-page.component.html',
-  styleUrls: ['./second-page.component.css']
+  selector: 'app-doctor',
+  templateUrl: './doctor.component.html',
+  styleUrls: ['./doctor.component.css']
 })
-export class SecondPageComponent implements OnInit {
+export class DoctorComponent implements OnInit {
 
   constructor(private afAuth: AngularFireAuth) {
   }
