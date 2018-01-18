@@ -12,10 +12,14 @@ import {
   FirebaseUIAuthConfig,
   FirebaseUIModule
 } from 'firebaseui-angular';
+
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
+import { DoctorService } from './doctor.service';
+import { AddDoctorComponent } from './add-doctor/add-doctor.component';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -49,18 +53,20 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddDoctorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
-  providers: [],
+  providers: [DoctorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

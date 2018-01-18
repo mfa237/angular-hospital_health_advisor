@@ -1,4 +1,14 @@
-<h1>FirebaseUI-Angular Sample</h1>
 <firebase-ui (signInSuccess)="successCallback($event)"></firebase-ui>
+<!-- <div *ngIf="selectedHero">
+    <h2>{{ selectedHero.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{hero.id}}</div>
+    <div>
+        <label>name:
+          <input [(ngModel)]="selectedHero.name" placeholder="name">
+        </label>
+      </div>    
+</div>   -->
+
+<button (click)="getAuthState()">get user id</button>
 <button (click)="logout()">Logout</button>
 <button [routerLink]="['/page']">To second page</button>

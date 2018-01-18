@@ -1,6 +1,24 @@
-<p>
-  second-page works
-</p>
 <firebase-ui (signInSuccess)="successCallback($event)"></firebase-ui>
+
+<!-- <p>{{doctor.age}}</p>
+<p>{{doctor.position}}</p> -->
+
 <button (click)="logout()">Logout</button>
+<button (click)="getDoctorList()">list doctor</button>
+<button [routerLink]="['/add']">Add doctor</button>
 <button [routerLink]="['/']">Back to main</button>
+
+<div *ngIf="doctor">
+<h2>My Doctors</h2>
+<ul class="doctor">
+  <!-- <li *ngFor="let doctor of doctors | async">  -->
+   <!-- <a routerLink="/detail/{{hero.id}}"> -->
+    <!-- <span class="badge">{{doctor.age}}</span>{{doctor.position}} -->
+    {{ (doctor | async)?.age }}
+    {{ (doctor | async)?.position }}
+    {{ (doctor | async)?.contact_number }}
+    {{ (doctor | async)?.email }}
+   <!-- </a> 
+   </li> -->
+</ul>
+</div>  
