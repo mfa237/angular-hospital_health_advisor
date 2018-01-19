@@ -15,8 +15,9 @@ import { DoctorService } from '../doctor.service';
 export class DoctorComponent implements OnInit {
 
   //doctorDoc: AngularFirestoreDocument<Doctor>;
-  doctor: Observable<Doctor>
+  doctors: Doctor[];
   userId: string;
+  docId: Observable<string>[];
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private doctorService: DoctorService) {
 
@@ -24,6 +25,10 @@ export class DoctorComponent implements OnInit {
       if(user){
         this.userId = user.uid;
       }
+    })
+
+    this.doctorService.getDoctorList().subscribe(doctors => {
+      this.doctors = doctors;
     })
     
   }
@@ -42,7 +47,9 @@ export class DoctorComponent implements OnInit {
 
   getDoctorList() {
 
-    this.doctor = this.doctorService.getDoctorList();
+    //console.log('doctor name: ' + this.doctors.length);
+
+    //this.docId = this.doctorService.getDoctorList();
   }
     
 

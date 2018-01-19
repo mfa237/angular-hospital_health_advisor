@@ -8,17 +8,30 @@
 <button [routerLink]="['/add']">Add doctor</button>
 <button [routerLink]="['/']">Back to main</button>
 
-<div *ngIf="doctor">
+<!-- <div *ngIf="doctor">
 <h2>My Doctors</h2>
 <ul class="doctor">
   <!-- <li *ngFor="let doctor of doctors | async">  -->
    <!-- <a routerLink="/detail/{{hero.id}}"> -->
     <!-- <span class="badge">{{doctor.age}}</span>{{doctor.position}} -->
-    {{ (doctor | async)?.age }}
+    <!-- {{ (doctor | async)?.age }}
     {{ (doctor | async)?.position }}
     {{ (doctor | async)?.contact_number }}
-    {{ (doctor | async)?.email }}
+    {{ (doctor | async)?.email }} -->
    <!-- </a> 
    </li> -->
+<!-- </ul>
+</div>    -->
+
+<h2>My Doctors</h2>
+<ul class="doctors">
+  <li *ngFor="let doctor of doctors">
+  <!-- <a routerLink="/detail/{{hero.id}}"> -->
+    <span class="badge">{{(doctor | async)?.name}}</span>
+  <!-- </a> -->
+  </li>
 </ul>
-</div>  
+
+<!-- <div *ngIf="docId">
+  {{ (docId | async)?}}
+</div> -->
