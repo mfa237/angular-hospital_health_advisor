@@ -20,6 +20,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { DoctorService } from './doctor.service';
 import { AddDoctorComponent } from './add-doctor/add-doctor.component';
+import { VideoComponent } from './video/video.component';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -54,7 +55,8 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    AddDoctorComponent
+    AddDoctorComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
