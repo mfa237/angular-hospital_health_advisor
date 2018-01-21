@@ -1,5 +1,6 @@
 var global_username = '';
-console.log('halo');
+
+console.log('sinch sinch');
 
 
 /*** After successful authentication, show user interface ***/
