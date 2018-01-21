@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
+import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import {FirebaseUISignInSuccess} from 'firebaseui-angular';
+import { FirebaseUISignInSuccess } from 'firebaseui-angular';
 import { Observable } from 'rxjs/Observable';
+import { Hospital } from 'app/hospital';
 
 @Component({
   selector: 'app-main',
@@ -40,11 +41,14 @@ export class MainComponent implements OnInit {
   }
 
   updateUserData(authState) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`hospitals/${authState.uid}/hospital_data/hospital_details`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`hospitals/${authState.uid}`);
 
     const data: Hospital = {
-      uid: authState.uid,
-      email: authState.email
+      id: authState.uid,
+      name: null,
+      email: authState.email,
+      city : null,
+      contact_number : null
     }
 
     return userRef.set(data)
@@ -62,9 +66,4 @@ export class MainComponent implements OnInit {
 
     }))
   }
-}
-
-interface Hospital {
-  uid: string;
-  email: string;
 }

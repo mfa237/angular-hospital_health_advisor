@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DoctorService } from './doctor.service';
 import { AddDoctorComponent } from './add-doctor/add-doctor.component';
 import { VideoComponent } from './video/video.component';
+import { EditDoctorComponent } from './edit-doctor/edit-doctor.component';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -56,7 +57,8 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
   declarations: [
     AppComponent,
     AddDoctorComponent,
-    VideoComponent
+    VideoComponent,
+    EditDoctorComponent
   ],
   imports: [
     BrowserModule,

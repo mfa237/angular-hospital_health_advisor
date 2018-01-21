@@ -12,11 +12,13 @@ import { Location } from '@angular/common';
 export class AddDoctorComponent implements OnInit {
 
   doctor: Doctor = {
+    id : '',
     name : '',
     position : '',
     age : null,
     email : '',
     contact_number : '',
+    hospital_id : ''
   };
 
   constructor(private doctorService: DoctorService, private location: Location) { }

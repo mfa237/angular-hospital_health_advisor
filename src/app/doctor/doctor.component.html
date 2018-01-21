@@ -9,17 +9,29 @@
 <button [routerLink]="['/video']">Video Call</button>
 <button [routerLink]="['/']">Back to main</button>
 
-<div *ngIf="doctor">
+<!-- <div *ngIf="doctor">
 <h2>My Doctors</h2>
 <ul class="doctor">
-  <!-- <li *ngFor="let doctor of doctors | async">  -->
-   <!-- <a routerLink="/detail/{{hero.id}}"> -->
-    <!-- <span class="badge">{{doctor.age}}</span>{{doctor.position}} -->
+  <li *ngFor="let doctor of doctors | async"> 
+   <a routerLink="/detail/{{hero.id}}">
+    <span class="badge">{{doctor.age}}</span>{{doctor.position}}
     {{ (doctor | async)?.age }}
     {{ (doctor | async)?.position }}
     {{ (doctor | async)?.contact_number }}
     {{ (doctor | async)?.email }}
-   <!-- </a> 
-   </li> -->
+   </a> 
+   </li>
 </ul>
-</div>  
+</div>   -->
+
+<div *ngIf="doctors">
+<h2>My Doctors</h2>
+<ul class="doctors">
+  <li *ngFor="let doctor of doctors">  
+    <a routerLink="/edit/{{doctor.id}}">
+      <span class="badge">{{doctor.id}}</span>{{doctor.name}}
+    </a>
+
+  </li>
+</ul>
+</div>

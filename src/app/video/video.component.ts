@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import 'jquery';
 
+
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',

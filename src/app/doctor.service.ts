@@ -1,36 +1,40 @@
 import { Injectable } from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Doctor } from 'app/doctor';
 import { error } from 'util';
+import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class DoctorService {
 
+  doctorColRef: AngularFirestoreCollection<Doctor>;
   doctorDoc: AngularFirestoreDocument<Doctor>;
   doctor: Observable<Doctor>
-  userId: string;
-  
+  userId: string;  
+  //doctorId: string;
+  type: string;
+  todo$: Observable<Doctor[]>;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
+
+    this.doctorColRef = this.afs.collection('doctors');
 
     afAuth.authState.subscribe( user => {
       if(user){
         this.userId = user.uid;
       }
     })
-  }
 
-  getDoctorList() {
+    this.todo$ = this.doctorColRef.snapshotChanges().map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as Doctor;
+        const id = action.payload.doc.id;
+        return { id, ...data };
+      })
+    })
 
-    console.log('uid: ' + this.userId);
-
-    const doctorName = 'david';    
-    this.doctorDoc = this.afs.doc<Doctor>(`hospitals/${this.userId}/doctors/${doctorName}/doctor_data/doctor_details`);
-    this.doctor = this.doctorDoc.valueChanges();
-
-    return this.doctor;
   }
 
   addDoctor(doctor: Doctor) {
@@ -40,23 +44,33 @@ export class DoctorService {
       }
     })
 
-    //const doctorName = 'david';    
-    this.doctorDoc = this.afs.doc<Doctor>(`hospitals/${this.userId}/doctors/${doctor.name}/doctor_data/doctor_details`);
+    doctor.id = UUID.UUID();
+    doctor.hospital_id = this.userId;
+
+    this.doctorDoc = this.afs.doc<Doctor>(`doctors/${doctor.id}`);
 
     this.doctorDoc.update(doctor).then(() => {
-      console.log('update successfully');
+      console.log('updated successfully');
     }).catch((error => {
       this.doctorDoc.set(doctor);
       console.log('added successfully');
     }))
-   
-    // if(???) {
-    //   this.doctorDoc.update(doctor);
-    // } else {
-    //   this.doctorDoc.set(doctor);
-    // }
-    
 
+  }
+
+  editDoctor(doctor: Doctor, id: string) {
+    console.log('doc to be update: ' + id);
+
+    doctor.id = id;
+    doctor.hospital_id = this.userId;
+
+    this.doctorDoc = this.afs.doc<Doctor>(`doctors/${id}`);
+    this.doctorDoc.update(doctor).then(() => {
+      console.log('updated successfully');
+    }).catch((error => {
+      this.doctorDoc.set(doctor);
+      console.log(error);
+    }))
   }
 
   getUserId() {
