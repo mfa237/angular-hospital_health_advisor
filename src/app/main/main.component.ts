@@ -13,18 +13,10 @@ import { Hospital } from 'app/hospital';
 
 export class MainComponent implements OnInit {
 
-  //user: Observable<User>;
   authState;
 
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
-    // this.user = this.afAuth.authState.switchMap(user => {
-    //   if(user) {
-    //     return this.afs.doc<User>('users/${user.id}').valueChanges()
-    //   } else {
-    //     return Observable.of(null)
-    //   }
-    // })
     this.getAuthState();
   }
 

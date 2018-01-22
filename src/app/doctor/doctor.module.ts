@@ -5,7 +5,7 @@ import {FirebaseUIModule} from 'firebaseui-angular';
 import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
-  {path: '', component: DoctorComponent},
+  {path: 'doctors', component: DoctorComponent},
 ];
 
 

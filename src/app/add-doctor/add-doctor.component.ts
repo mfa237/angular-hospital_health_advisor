@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./add-doctor.component.css']
 })
 
+
 export class AddDoctorComponent implements OnInit {
 
   doctor: Doctor = {

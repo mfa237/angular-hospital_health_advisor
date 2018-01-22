@@ -1,7 +1,4 @@
-<firebase-ui (signInSuccess)="successCallback($event)"></firebase-ui>
-
-<!-- <p>{{doctor.age}}</p>
-<p>{{doctor.position}}</p> -->
+<!-- <firebase-ui (signInSuccess)="successCallback($event)"></firebase-ui> -->
 
 <button (click)="logout()">Logout</button>
 <button (click)="getDoctorList()">list doctor</button>
@@ -9,22 +6,59 @@
 <button [routerLink]="['/video']">Video Call</button>
 <button [routerLink]="['/']">Back to main</button>
 
-<!-- <div *ngIf="doctor">
-<h2>My Doctors</h2>
-<ul class="doctor">
-  <li *ngFor="let doctor of doctors | async"> 
-   <a routerLink="/detail/{{hero.id}}">
-    <span class="badge">{{doctor.age}}</span>{{doctor.position}}
-    {{ (doctor | async)?.age }}
-    {{ (doctor | async)?.position }}
-    {{ (doctor | async)?.contact_number }}
-    {{ (doctor | async)?.email }}
-   </a> 
-   </li>
-</ul>
-</div>   -->
+<nav aria-label="breadcrumb" style="background-color: lightblue;">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Doctors</li>
+    </ol>
+</nav>
 
-<div *ngIf="doctors">
+<style>
+
+    table, tbody, tr, th {
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 18px;
+    }
+
+</style>
+
+<div class="container">
+    <div class="panel-heading">
+        <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/add']">Add New Doctor</a> 
+    </div>
+</div>
+
+<div class="container">
+    <table class="table table-hover table-dark" border="1">
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Age</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contact Number</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let doctor of doctors">                
+                <th scope="row"></th>
+                <td><i aria-hidden="true"></i> <a routerLink="/viewDoc/{{doctor.id}}">  {{ doctor.name }}</a></td>
+                <td>{{ doctor.position }}</td>
+                <td>{{ doctor.age }}</td>
+                <td>{{ doctor.email }}</td>
+                <td>{{ doctor.contact_number }}</td>
+                <td><a routerLink="/editDoc/{{doctor.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+            </tr>           
+        </tbody>
+    </table>
+</div>
+
+
+<!-- <div *ngIf="doctors">
 <h2>My Doctors</h2>
 <ul class="doctors">
   <li *ngFor="let doctor of doctors">  
@@ -34,4 +68,4 @@
 
   </li>
 </ul>
-</div>
+</div> -->

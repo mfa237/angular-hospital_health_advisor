@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+
 import {
   AuthMethods,
   AuthProvider,
@@ -18,10 +19,16 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
+import { NavbarModule } from './navbar/navbar.module';
 import { DoctorService } from './doctor.service';
 import { AddDoctorComponent } from './add-doctor/add-doctor.component';
 import { VideoComponent } from './video/video.component';
 import { EditDoctorComponent } from './edit-doctor/edit-doctor.component';
+import { DoctorModule } from 'app/doctor/doctor.module';
+import { HomeModule } from 'app/home/home.module';
+import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import { AppointmentComponent } from './appointment/appointment.component';
+import { AppointmentService } from './appointment.service';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -58,7 +65,9 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     AppComponent,
     AddDoctorComponent,
     VideoComponent,
-    EditDoctorComponent
+    EditDoctorComponent,
+    DoctorDetailsComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +77,12 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    DoctorModule,
+    NavbarModule,
+    HomeModule
   ],
-  providers: [DoctorService],
+  providers: [DoctorService, AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

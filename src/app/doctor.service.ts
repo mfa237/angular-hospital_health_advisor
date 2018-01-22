@@ -11,7 +11,7 @@ export class DoctorService {
 
   doctorColRef: AngularFirestoreCollection<Doctor>;
   doctorDoc: AngularFirestoreDocument<Doctor>;
-  doctor: Observable<Doctor>
+  doctor: Doctor;
   userId: string;  
   //doctorId: string;
   type: string;
@@ -73,8 +73,44 @@ export class DoctorService {
     }))
   }
 
-  getUserId() {
-    return this.userId;
+  // getUserId() {
+  //   return this.userId;
+  // }
+
+  deleteDoctor(id: string) {
+    console.log('doctor to be deleted: ' + id);
+    this.doctorDoc = this.afs.doc<Doctor>(`doctors/${id}`);
+    this.doctorDoc.delete().then(() => {
+      console.log('doctor deleted successfully');
+    })
+    
+  }
+
+  getDoctor(doctorId: string){
+
+    this.doctorColRef = this.afs.collection('doctors');
+    this.doctorColRef.ref.where('id', '==', doctorId).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        console.log('doc.id: ' + doc.id, '=>', doc.data());
+
+        this.doctor = {
+          id : doc.get('id'),
+          name: doc.get('name'),
+          position: doc.get('position'),
+          age: doc.get('age'),
+          email: doc.get('email'),
+          contact_number: doc.get('contact_number'),
+          hospital_id : doc.get('hospital_id')
+        };
+
+      });
+    }).catch(error => {
+      console.log(error);
+    })
+
+    return this.doctor;
+
+
   }
 
 }

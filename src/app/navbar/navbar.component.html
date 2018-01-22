@@ -1,0 +1,28 @@
+<div id="app">
+    <nav class="navbar navbar-light navbar-static-top" style="background-color: black;"> 
+      <div class="container">  
+        <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; Gion Hospital</span>
+        <!-- Right Side Of Navbar-->
+        <ul class="nav navbar-nav navbar-right">
+            <!-- Authentication Links -->  
+            
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/']"><i class="fa fa-home" aria-hidden="true"></i> Home<span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item active">
+                  <a class="nav-link" [routerLink]="['/doctors']"><i class="fa fa-user-md" aria-hidden="true"></i> Doctors <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" [routerLink]="['/appointments']"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Appointments <span class="sr-only">(current)</span></a>
+                  </li>
+
+                  <li class="nav-item active">
+                      <button (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
+                    </li>
+                
+          </ul>  
+        </div>
+    </nav>
+  </div>

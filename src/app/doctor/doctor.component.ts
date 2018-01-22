@@ -15,33 +15,21 @@ import { DoctorService } from '../doctor.service';
 export class DoctorComponent implements OnInit {
 
   doctorColRef: AngularFirestoreCollection<Doctor>;
-  doctors : Doctor[] = [];
-  doctor: Observable<Doctor>
+  doctors: Doctor[] = [];
+  doctor: Observable<Doctor>;
   userId: string;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private doctorService: DoctorService) {
 
     afAuth.authState.subscribe( user => {
-      if(user){
+      if (user) {
         this.userId = user.uid;
       }
-    })
-    
-  }
+    });
+    }
 
   ngOnInit(): void {
     this.afAuth.authState.subscribe(d => console.log(d));
-  }
-
-  logout() {
-    this.afAuth.auth.signOut();
-  }
-
-  successCallback(data: FirebaseUISignInSuccess) {
-    console.log(data);
-  }
-
-  getDoctorList() {
 
     this.doctorColRef = this.afs.collection('doctors');
     this.doctorColRef.ref.where('hospital_id', '==', this.userId).get().then(snapshot => {
@@ -63,6 +51,14 @@ export class DoctorComponent implements OnInit {
       console.log(error);
     })
 
+  }
+
+  // logout() {
+  //   this.afAuth.auth.signOut();
+  // }
+
+  successCallback (data: FirebaseUISignInSuccess) {
+    console.log(data);
   }
 
 }
