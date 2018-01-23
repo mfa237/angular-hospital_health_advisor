@@ -15,9 +15,7 @@ import { Observable } from 'rxjs/Observable';
 export class EditDoctorComponent implements OnInit {
 
   doctorDoc: AngularFirestoreDocument<Doctor>;
-
   paramId = this.route.snapshot.paramMap.get('id');
-
   doctor: Doctor;
 
   constructor(private afs: AngularFirestore, private route: ActivatedRoute, private doctorService: DoctorService, private location: Location) { }

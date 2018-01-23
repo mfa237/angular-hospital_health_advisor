@@ -38,7 +38,9 @@ export class AppointmentComponent implements OnInit {
           id : doc.get('id'),
           description: doc.get('description'),
           patient_id: doc.get('patient_id'),
+          patient_name: doc.get('patient_name'),
           doctor_id: doc.get('doctor_id'),
+          doctor_name: doc.get('doctor_name'),
           hospital_id: doc.get('hospital_id'),
           date: doc.get('date'),
           time : doc.get('time')

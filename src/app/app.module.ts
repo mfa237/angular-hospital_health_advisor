@@ -29,6 +29,9 @@ import { HomeModule } from 'app/home/home.module';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { AppointmentService } from './appointment.service';
+import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
+import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -67,7 +70,10 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     VideoComponent,
     EditDoctorComponent,
     DoctorDetailsComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    AddAppointmentComponent,
+    EditAppointmentComponent,
+    AppointmentDetailsComponent
   ],
   imports: [
     BrowserModule,

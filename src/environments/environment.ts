@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyA6Y_7OdJpKD1SiRH99kie_DjIByBmI0KA',
+    apiKey: 'AIzaSyDRrxc0kF0LONwYjtXx7RIBeDMfw_rKXXE',
     authDomain: 'pocket-health-advisor.firebaseapp.com',
     databaseURL: 'https://pocket-health-advisor.firebaseio.com',
     projectId: 'pocket-health-advisor',

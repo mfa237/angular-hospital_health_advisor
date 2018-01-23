@@ -6,11 +6,14 @@ import { Doctor } from 'app/doctor';
 import { error } from 'util';
 import { UUID } from 'angular2-uuid';
 import { Appointment } from 'app/appointment';
+import { Patient } from 'app/patient';
 
 @Injectable()
 export class AppointmentService {
 
   appColRef: AngularFirestoreCollection<Appointment>;
+  patientColRef: AngularFirestoreCollection<Patient>;
+  doctorColRef: AngularFirestoreCollection<Doctor>;
   appDoc: AngularFirestoreDocument<Appointment>;
   appointment: Appointment;
   userId: string;  
@@ -18,24 +21,50 @@ export class AppointmentService {
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
     
     this.appColRef = this.afs.collection('appointments');
+    this.doctorColRef = this.afs.collection('doctors');
+    this.patientColRef = this.afs.collection('patients');
 
     afAuth.authState.subscribe( user => {
       if(user){
         this.userId = user.uid;
+        console.log('what is the user id: ' + this.userId);
       }
     })
 
   }
 
-  addAppointment(appointment : Appointment){
+  addAppointment(appointment: Appointment){
     this.afAuth.authState.subscribe( user => {
       if(user){
         this.userId = user.uid;
+        console.log('what is the user id: ' + this.userId);
       }
     })
 
     appointment.id = UUID.UUID();
     appointment.hospital_id = this.userId;
+
+    this.doctorColRef.ref.where('name', '==', appointment.doctor_name).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        console.log('doc.id: ' + doc.id, '=>', doc.data());
+
+        appointment.doctor_id = doc.get('id');
+
+      });
+    }).catch(error => {
+      console.log(error);
+    })
+
+    this.patientColRef.ref.where('name', '==', appointment.patient_name).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        console.log('doc.id: ' + doc.id, '=>', doc.data());
+
+        appointment.patient_id = doc.get('id');
+
+      });
+    }).catch(error => {
+      console.log(error);
+    })
 
     this.appDoc = this.afs.doc<Appointment>(`appointments/${appointment.id}`);
 
@@ -73,7 +102,6 @@ export class AppointmentService {
 
   getAppointment(appId: string){
 
-    this.appColRef = this.afs.collection('appointments');
     this.appColRef.ref.where('id', '==', appId).get().then(snapshot => {
       snapshot.forEach(doc => {
         console.log('doc.id: ' + doc.id, '=>', doc.data());
@@ -82,7 +110,9 @@ export class AppointmentService {
           id : doc.get('id'),
           description: doc.get('description'),
           patient_id: doc.get('patient_id'),
+          patient_name: doc.get('patient_name'),
           doctor_id: doc.get('doctor_id'),
+          doctor_name: doc.get('doctor_name'),
           hospital_id: doc.get('hospital_id'),
           date: doc.get('date'),
           time : doc.get('time')

@@ -27,7 +27,7 @@ table, tbody, tr, th {
 
 <div class="container">
     <div class="panel-heading">
-        <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/add']">Add New Appointment</a> 
+        <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/addApp']">Add New Appointment</a> 
     </div>
 </div>
 
@@ -37,11 +37,11 @@ table, tbody, tr, th {
             <tr>
                 <th scope="col">No.</th>
                 <th scope="col">Description</th>
-                <th scope="col">Patient ID</th>
-                <th scope="col">Doctor ID</th>
-                <th scope="col">Hosptal ID</th>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Doctor Name</th>
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
 
@@ -49,13 +49,11 @@ table, tbody, tr, th {
             <tr *ngFor="let appointment of appointments">                
                 <th scope="row"></th>
                 <td><i aria-hidden="true"></i> <a routerLink="/viewApp/{{appointment.id}}">  {{ appointment.description }}</a></td>
-                <td>{{ appointment.description }}</td>
-                <td>{{ appointment.patient_id }}</td>
-                <td>{{ appointment.doctor_id }}</td>
-                <td>{{ appointment.hospital_id }}</td>
+                <td>{{ appointment.patient_name }}</td>
+                <td>{{ appointment.doctor_name }}</td>
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.time }}</td>
-                <td><a routerLink="/editApp/{{appoitment.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                <td><a routerLink="/editApp/{{appointment.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
             </tr>           
         </tbody>
     </table>
