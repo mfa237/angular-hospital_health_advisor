@@ -109,8 +109,7 @@ export class DoctorService {
     })
 
     return this.doctor;
-
-
+    
   }
 
 }

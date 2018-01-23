@@ -1,0 +1,11 @@
+<div class="patient-detail">
+  <div *ngIf="patient" class="card">
+    <div class="card-block">
+      <h4 class="card-title">Name : {{patient.name}}</h4>
+      <h5 class="card-title">IC Number : {{patient.ic}}</h5>
+      <p class="card-text">Age : {{patient.age}}</p>
+      <p class="card-text">Sex : {{patient.sex}}</p>
+    </div>
+  </div>
+  <a class="btn btn-primary" (click)="goBack()">Back</a>
+</div>

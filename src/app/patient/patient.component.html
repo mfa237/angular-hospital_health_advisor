@@ -1,0 +1,48 @@
+<nav aria-label="breadcrumb" style="background-color: lightblue;">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Patients</li>
+  </ol>
+</nav>
+
+<style>
+
+  table, tbody, tr, th {
+      text-align: center;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 18px;
+  }
+
+</style>
+
+<div class="container">
+  <div class="panel-heading">
+      <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/addPatient']">Add New Patient</a> 
+  </div>
+</div>
+
+<div class="container">
+  <table class="table table-hover table-dark" border="1">
+      <thead>
+          <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Name</th>
+              <th scope="col">IC</th>
+              <th scope="col">Age</th>
+              <th scope="col">Sex</th>
+              <th scope="col">Actions</th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <tr *ngFor="let patient of patients">                
+              <th scope="row"></th>
+              <td><i aria-hidden="true"></i> <a routerLink="/viewPatient/{{patient.id}}">  {{ patient.name }}</a></td>
+              <td>{{ patient.ic }}</td>
+              <td>{{ patient.age }}</td>
+              <td>{{ patient.sex }}</td>
+              <td><a routerLink="/editPatient/{{patient.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+          </tr>           
+      </tbody>
+  </table>
+</div>

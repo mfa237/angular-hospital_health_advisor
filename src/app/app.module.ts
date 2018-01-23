@@ -32,6 +32,11 @@ import { AppointmentService } from './appointment.service';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
 import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
+import { PatientComponent } from './patient/patient.component';
+import { PatientService } from './patient.service';
+import { AddPatientComponent } from './add-patient/add-patient.component';
+import { EditPatientComponent } from './edit-patient/edit-patient.component';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -73,7 +78,11 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     AppointmentComponent,
     AddAppointmentComponent,
     EditAppointmentComponent,
-    AppointmentDetailsComponent
+    AppointmentDetailsComponent,
+    PatientComponent,
+    AddPatientComponent,
+    EditPatientComponent,
+    PatientDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +97,7 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     NavbarModule,
     HomeModule
   ],
-  providers: [DoctorService, AppointmentService],
+  providers: [DoctorService, AppointmentService, PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

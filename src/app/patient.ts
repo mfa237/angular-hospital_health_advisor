@@ -4,4 +4,5 @@ export class Patient {
     ic : string;
     age : number;
     sex : string;
+    hospital_id : string;
 }
