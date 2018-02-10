@@ -13,11 +13,15 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 export class DoctorDetailsComponent implements OnInit {
 
   doctor: Doctor;
+  id: string;
 
   constructor(private doctorService: DoctorService, private route: ActivatedRoute, private afs: AngularFirestore, private location: Location) { }
 
   ngOnInit() {
-    this.doctor = this.doctorService.getDoctor(this.route.snapshot.paramMap.get('id'));
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+    })
+    this.doctor = this.doctorService.getDoctor(this.id);
     console.log('doctor name: ' + this.doctor.name);
   }
 

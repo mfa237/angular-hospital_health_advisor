@@ -33,5 +33,10 @@ export class AddPatientComponent implements OnInit {
 
     this.location.back();
   }
+  
+  back() {
+    this.location.back();
+  }
+
 
 }

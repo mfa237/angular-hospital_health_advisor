@@ -1,0 +1,7 @@
+#background {
+    background: url(/assets/img/firstaid.png);
+    background-size: 200px 100px;
+    background-repeat: no-repeat;
+    background-position-x: 70px;
+    /* background-position: center; */
+}

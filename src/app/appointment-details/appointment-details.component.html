@@ -1,12 +1,25 @@
-<div class="appointment-detail">
-  <div *ngIf="appointment" class="card">
-    <div class="card-block">
-      <h4 class="card-title">Description : {{appointment.description}}</h4>
-      <h5 class="card-title">Patient Name : {{appointment.patient_name}}</h5>
-      <p class="card-text">Doctor Name : {{appointment.doctor_name}}</p>
-      <p class="card-text">Date : {{appointment.date}}</p>
-      <p class="card-text">Time : {{appointment.contact_number}}</p>
-    </div>
-  </div>
-  <a class="btn btn-primary" (click)="goBack()">Back</a>
+<div class="container">
+    <nav aria-label="breadcrumb" style="background-color: white;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/appointments']">Appointments</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ appointment.description }}</li>
+        </ol>
+    </nav>
 </div>
+
+<div class="container">
+  <div class="jumbotron">
+    <div *ngIf="appointment">
+        <h1 class="card-title">{{appointment.description}}</h1>
+        <ul>
+          <li class="card-title">Patient Name : {{appointment.patient_name}}</li>
+          <li class="card-text">Doctor Name : {{appointment.doctor_name}}</li>
+          <li class="card-text">Date : {{appointment.date}}</li>
+          <li class="card-text">Time : {{appointment.time}}</li>
+        </ul>
+    </div>
+    <a class="btn btn-primary" (click)="goBack()">Back</a>
+  </div>
+</div>
+

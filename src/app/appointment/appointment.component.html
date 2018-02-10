@@ -1,19 +1,11 @@
-<!-- <firebase-ui (signInSuccess)="successCallback($event)"></firebase-ui> -->
-<!-- 
-<button (click)="logout()">Logout</button>
-<button (click)="getDoctorList()">list doctor</button>
-<button [routerLink]="['/add']">Add doctor</button>
-<button [routerLink]="['/video']">Video Call</button>
-<button [routerLink]="['/']">Back to main</button> -->
-
-<button [routerLink]="['/video']">Video Call</button>
-
-<nav aria-label="breadcrumb" style="background-color: lightblue;">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Appointments</li>
-    </ol>
-</nav>
+<div class="container">
+    <nav aria-label="breadcrumb" style="background-color: lightblue;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Appointments</li>
+        </ol>
+    </nav>
+</div>
 
 <style>
 
@@ -25,7 +17,7 @@ table, tbody, tr, th {
 
 </style>
 
-<div class="container">
+<div class="container" style="padding-bottom: 10px;">
     <div class="panel-heading">
         <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/addApp']">Add New Appointment</a> 
     </div>
@@ -53,21 +45,9 @@ table, tbody, tr, th {
                 <td>{{ appointment.doctor_name }}</td>
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.time }}</td>
-                <td><a routerLink="/editApp/{{appointment.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                <td><a routerLink="/editApp/{{appointment.id}}"><i class="fas fa-pencil-alt"></i></a></td>
             </tr>           
         </tbody>
     </table>
 </div>
 
-
-<!-- <div *ngIf="doctors">
-<h2>My Doctors</h2>
-<ul class="doctors">
-  <li *ngFor="let doctor of doctors">  
-    <a routerLink="/edit/{{doctor.id}}">
-      <span class="badge">{{doctor.id}}</span>{{doctor.name}}
-    </a>
-
-  </li>
-</ul>
-</div> -->

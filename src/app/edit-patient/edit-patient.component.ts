@@ -53,4 +53,8 @@ export class EditPatientComponent implements OnInit {
     this.location.back();
   }
 
+  back() {
+    this.location.back();
+  }
+
 }

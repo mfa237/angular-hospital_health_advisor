@@ -1,31 +1,30 @@
 <div id="app">
     <nav class="navbar navbar-light navbar-static-top" style="background-color: black;"> 
       <div class="container">  
-        <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; Gion Hospital</span>
+        <span style="font-size:30px;cursor:pointer;color:white">Gion Hospital</span>
+
         <!-- Right Side Of Navbar-->
         <ul class="nav navbar-nav navbar-right">
-            <!-- Authentication Links -->  
             
             <li class="nav-item active">
                 <a class="nav-link" [routerLink]="['/']"><i class="fa fa-home" aria-hidden="true"></i> Home<span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/doctors']"><i class="fa fa-user-md" aria-hidden="true"></i> Doctors <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item active">
-                  <a class="nav-link" [routerLink]="['/doctors']"><i class="fa fa-user-md" aria-hidden="true"></i> Doctors <span class="sr-only">(current)</span></a>
-                </li>
+            <li class="nav-item active">
+              <a class="nav-link" [routerLink]="['/appointments']"><i class="far fa-calendar-alt"></i> Appointments <span class="sr-only">(current)</span></a>
+            </li>
 
-                <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['/appointments']"><i class="far fa-calendar-alt"></i> Appointments <span class="sr-only">(current)</span></a>
-                  </li>
+            <li class="nav-item active">
+              <a class="nav-link" [routerLink]="['/patients']"><i class="fa fa-wheelchair" aria-hidden="true"></i> Patients <span class="sr-only">(current)</span></a>
+            </li>
 
-                  <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['/patients']"><i class="fa fa-wheelchair" aria-hidden="true"></i> Patients <span class="sr-only">(current)</span></a>
-                  </li>
-
-                  <li class="nav-item active">
-                      <button (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
-                    </li>
-                
+            <li class="nav-item active">
+              <a (click)="logout()"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a>
+            </li>                
           </ul>  
         </div>
     </nav>

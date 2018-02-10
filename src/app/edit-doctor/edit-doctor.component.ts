@@ -29,6 +29,7 @@ export class EditDoctorComponent implements OnInit {
           id : doctorRef.id,
           name : doctorRef.name,
           position : doctorRef.position,
+          ic: doctorRef.ic,
           age : doctorRef.age,
           email : doctorRef.email,
           contact_number : doctorRef.contact_number,
@@ -50,6 +51,10 @@ export class EditDoctorComponent implements OnInit {
 
   deleteDoctor() {
     this.doctorService.deleteDoctor(this.paramId);
+    this.location.back();
+  }
+
+  back() {
     this.location.back();
   }
 

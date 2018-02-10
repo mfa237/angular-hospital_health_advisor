@@ -3,7 +3,6 @@ import { ROUTES } from './navbar-routes.config';
 import { MenuType } from './navbar.metadata';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',

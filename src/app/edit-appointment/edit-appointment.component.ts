@@ -31,6 +31,7 @@ export class EditAppointmentComponent implements OnInit {
           patient_id : appRef.patient_id,
           patient_name : appRef.patient_name,
           doctor_id : appRef.doctor_id,
+          doctor_ic : appRef.doctor_ic,
           doctor_name : appRef.doctor_name,
           hospital_id : appRef.hospital_id,
           date : appRef.date,
@@ -53,6 +54,10 @@ export class EditAppointmentComponent implements OnInit {
 
   deleteAppointment() {
     this.appointmentService.deleteAppointment(this.paramId);
+    this.location.back();
+  }
+
+  back() {
     this.location.back();
   }
 

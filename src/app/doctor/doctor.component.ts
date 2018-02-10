@@ -40,6 +40,7 @@ export class DoctorComponent implements OnInit {
           id : doc.get('id'),
           name: doc.get('name'),
           position: doc.get('position'),
+          ic: doc.get('ic'),
           age: doc.get('age'),
           email: doc.get('email'),
           contact_number: doc.get('contact_number'),

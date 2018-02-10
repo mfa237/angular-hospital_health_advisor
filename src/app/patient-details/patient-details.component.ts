@@ -13,11 +13,15 @@ import { PatientService } from '../patient.service';
 export class PatientDetailsComponent implements OnInit {
 
   patient: Patient;
+  id: string;
 
   constructor(private patientService: PatientService, private route: ActivatedRoute, private afs: AngularFirestore, private location: Location) { }
 
   ngOnInit() {
-    this.patient = this.patientService.getPatient(this.route.snapshot.paramMap.get('id'));
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+    })
+    this.patient = this.patientService.getPatient(this.id);
     console.log('patient name: ' + this.patient.name);
   }
 

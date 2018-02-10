@@ -49,7 +49,6 @@ export class AppointmentService {
         console.log('doc.id: ' + doc.id, '=>', doc.data());
 
         appointment.doctor_id = doc.get('id');
-
       });
     }).catch(error => {
       console.log(error);
@@ -112,6 +111,7 @@ export class AppointmentService {
           patient_id: doc.get('patient_id'),
           patient_name: doc.get('patient_name'),
           doctor_id: doc.get('doctor_id'),
+          doctor_ic: doc.get('doctor_ic'),
           doctor_name: doc.get('doctor_name'),
           hospital_id: doc.get('hospital_id'),
           date: doc.get('date'),

@@ -57,11 +57,7 @@ const facebookCustomConfig: AuthProviderWithCustomConfig = {
 const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
   providers: [
     AuthProvider.Google,
-    facebookCustomConfig,
-    AuthProvider.Twitter,
-    AuthProvider.Github,
     AuthProvider.Password,
-    AuthProvider.Phone
   ],
   method: AuthMethods.Popup,
   tos: '<your-tos-link>',

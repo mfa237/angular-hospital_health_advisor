@@ -1,13 +1,24 @@
-<div class="doctor-detail">
-    <div *ngIf="doctor" class="card">
-      <div class="card-block">
-        <h4 class="card-title">Name : {{doctor.name}}</h4>
-        <h5 class="card-title">Position : {{doctor.position}}</h5>
-        <p class="card-text">Age : {{doctor.age}}</p>
-        <p class="card-text">Email : {{doctor.email}}</p>
-        <p class="card-text">Contact Number : {{doctor.contact_number}}</p>
-      </div>
+<div class="container">
+    <nav aria-label="breadcrumb" style="background-color: white;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/doctors']">Doctors</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ doctor.name }}</li>
+        </ol>
+    </nav>
+</div>
+  
+<div class="container">
+  <div class="jumbotron">
+    <div *ngIf="doctor">
+        <h1 class="card-title">{{doctor.name}}</h1>
+        <ul>
+          <li class="card-title">Position : {{doctor.position}}</li>
+          <li class="card-text">Age : {{doctor.age}}</li>
+          <li class="card-text">Email : {{doctor.email}}</li>
+          <li class="card-text">Contact Number : {{doctor.contact_number}}</li>
+        </ul>
     </div>
     <a class="btn btn-primary" (click)="goBack()">Back</a>
   </div>
-  
+</div>

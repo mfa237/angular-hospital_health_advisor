@@ -16,6 +16,7 @@ export class AddDoctorComponent implements OnInit {
     id : '',
     name : '',
     position : '',
+    ic : '',
     age : null,
     email : '',
     contact_number : '',
@@ -32,6 +33,10 @@ export class AddDoctorComponent implements OnInit {
       this.doctorService.addDoctor(this.doctor);
     }
 
+    this.location.back();
+  }
+
+  back() {
     this.location.back();
   }
 

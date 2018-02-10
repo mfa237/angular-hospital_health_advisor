@@ -1,11 +1,23 @@
-<div class="patient-detail">
-  <div *ngIf="patient" class="card">
-    <div class="card-block">
-      <h4 class="card-title">Name : {{patient.name}}</h4>
-      <h5 class="card-title">IC Number : {{patient.ic}}</h5>
-      <p class="card-text">Age : {{patient.age}}</p>
-      <p class="card-text">Sex : {{patient.sex}}</p>
+<div class="container">
+    <nav aria-label="breadcrumb" style="background-color: white;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/patients']">Patients</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ patient.name }}</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+      <div *ngIf="patient">
+          <h1 class="card-title">{{patient.name}}</h1>
+          <ul>
+            <li class="card-title">IC Number : {{patient.ic}}</li>
+            <li class="card-text">Age : {{patient.age}}</li>
+            <li class="card-text">Sex : {{patient.sex}}</li>
+          </ul>
+      </div>
+      <a class="btn btn-primary" (click)="goBack()">Back</a>
     </div>
   </div>
-  <a class="btn btn-primary" (click)="goBack()">Back</a>
-</div>

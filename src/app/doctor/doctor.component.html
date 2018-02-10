@@ -1,17 +1,11 @@
-<!-- <firebase-ui (signInSuccess)="successCallback($event)"></firebase-ui> -->
-
-<button (click)="logout()">Logout</button>
-<button (click)="getDoctorList()">list doctor</button>
-<button [routerLink]="['/add']">Add doctor</button>
-<button [routerLink]="['/video']">Video Call</button>
-<button [routerLink]="['/']">Back to main</button>
-
-<nav aria-label="breadcrumb" style="background-color: lightblue;">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Doctors</li>
-    </ol>
-</nav>
+<div class="container">
+    <nav aria-label="breadcrumb" style="background-color: white;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Doctors</li>
+        </ol>
+    </nav>
+</div>
 
 <style>
 
@@ -23,7 +17,7 @@
 
 </style>
 
-<div class="container">
+<div class="container" style="padding-bottom: 10px;">
     <div class="panel-heading">
         <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/addDoc']">Add New Doctor</a> 
     </div>

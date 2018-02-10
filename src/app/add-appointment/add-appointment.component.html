@@ -4,35 +4,41 @@
   
           <div class="form-group">
             <label>Description</label>
-            <input type="text" placeholder="Description" [(ngModel)]="appointment.description" name="description" class="form-control">          
+            <input type="text" placeholder="Eg: Kidney Surgery" [(ngModel)]="appointment.description" name="description" class="form-control">          
           </div>
   
           <div class="form-group">
               <label>Patient Name</label>
-              <input type="text" placeholder="Patient Name" [(ngModel)]="appointment.patient_name" name="patient_name" class="form-control">            
+              <input type="text" placeholder="Eg: Sim Yoke Ning" [(ngModel)]="appointment.patient_name" name="patient_name" class="form-control">            
             </div>
   
             <div class="form-group">
               <label>Doctor Name</label>
-              <input type="text" placeholder="Doctor Name" [(ngModel)]="appointment.doctor_name" name="doctor_name" class="form-control">            
+              <input type="text" placeholder="Eg: Chan Kok Leng" [(ngModel)]="appointment.doctor_name" name="doctor_name" class="form-control">            
+            </div>
+
+            <div class="form-group">
+              <label>Doctor IC</label>
+              <input type="text" placeholder="Eg: 990088-09-1111" [(ngModel)]="appointment.doctor_ic" name="doctor_ic" class="form-control">            
             </div>
   
             <div class="form-group">
               <label>Date</label>
-              <input type="text" placeholder="Date" [(ngModel)]="appointment.date" name="date" class="form-control">            
+              <input type="text" placeholder="DD/MM/YYYY" [(ngModel)]="appointment.date" name="date" class="form-control">            
             </div>
 
             <div class="form-group">
               <label>Time</label>
-              <input type="text" placeholder="Time" [(ngModel)]="appointment.time" name="time" class="form-control">            
-            </div>
-    
+              <input type="text" placeholder="Eg: 12pm" [(ngModel)]="appointment.time" name="time" class="form-control">            
+            </div>    
   
             <div class="form-group" style="text-align: center;">
                 <input type="submit" class="btn btn-primary" value="Submit"/>
+                <input type="submit" class="btn btn-danger" onclick="back()" value="Back"/>
             </div>
   
       </form>
+
   </div>
   
   

@@ -13,11 +13,15 @@ import { AppointmentService } from '../appointment.service';
 export class AppointmentDetailsComponent implements OnInit {
 
   appointment: Appointment;
+  id: string;
 
   constructor(private appointmentService: AppointmentService, private route: ActivatedRoute, private afs: AngularFirestore, private location: Location) { }
 
   ngOnInit() {
-    this.appointment = this.appointmentService.getAppointment(this.route.snapshot.params.get('id'));
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+    })
+    this.appointment = this.appointmentService.getAppointment(this.id);
     console.log('appointment description: ' + this.appointment.description)
   }
 
