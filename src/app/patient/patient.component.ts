@@ -11,6 +11,7 @@ import { PatientService} from '../patient.service';
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.css']
 })
+
 export class PatientComponent implements OnInit {
 
   patientColRef: AngularFirestoreCollection<Patient>;

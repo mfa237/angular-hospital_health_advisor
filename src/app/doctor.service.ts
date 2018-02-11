@@ -13,7 +13,6 @@ export class DoctorService {
   doctorDoc: AngularFirestoreDocument<Doctor>;
   doctor: Doctor;
   userId: string;  
-  //doctorId: string;
   type: string;
   todo$: Observable<Doctor[]>;
 
@@ -72,10 +71,6 @@ export class DoctorService {
       console.log(error);
     }))
   }
-
-  // getUserId() {
-  //   return this.userId;
-  // }
 
   deleteDoctor(id: string) {
     console.log('doctor to be deleted: ' + id);

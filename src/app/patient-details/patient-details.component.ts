@@ -10,6 +10,7 @@ import { PatientService } from '../patient.service';
   templateUrl: './patient-details.component.html',
   styleUrls: ['./patient-details.component.css']
 })
+
 export class PatientDetailsComponent implements OnInit {
 
   patient: Patient;

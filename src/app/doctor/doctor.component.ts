@@ -53,11 +53,7 @@ export class DoctorComponent implements OnInit {
     })
 
   }
-
-  // logout() {
-  //   this.afAuth.auth.signOut();
-  // }
-
+  
   successCallback (data: FirebaseUISignInSuccess) {
     console.log(data);
   }

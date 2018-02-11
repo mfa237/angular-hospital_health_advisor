@@ -96,5 +96,6 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
   providers: [DoctorService, AppointmentService, PatientService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

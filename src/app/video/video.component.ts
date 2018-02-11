@@ -295,5 +295,4 @@ $('button').prop('disabled', false); //Solve Firefox issue, ensure buttons alway
 
   }
 
-
 }
