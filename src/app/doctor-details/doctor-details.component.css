@@ -1,4 +1,13 @@
-ul li {
-    padding: 10px;
-    font-size: 15px;
+table, tbody, tr, th {
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
+
+#question ul li {
+  text-align: left;
+}
+
+th, td {
+  text-align: left;
 }

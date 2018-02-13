@@ -37,8 +37,9 @@
       </thead>
 
       <tbody>
-          <tr *ngFor="let patient of patients">                
-              <th scope="row"></th>
+          <tr *ngFor="let patient of patients; let i = index;">                
+              <!-- <th scope="row"></th> -->
+              <td>{{ i+1 }}</td>
               <td><i aria-hidden="true"></i> <a routerLink="/viewPatient/{{patient.id}}">  {{ patient.name }}</a></td>
               <td>{{ patient.ic }}</td>
               <td>{{ patient.age }}</td>

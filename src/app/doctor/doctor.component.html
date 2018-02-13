@@ -38,8 +38,9 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let doctor of doctors">                
-                <th scope="row"></th>
+            <tr *ngFor="let doctor of doctors; let i = index;">                
+                <!-- <th scope="row"></th> -->
+                <td>{{ i+1 }}</td>
                 <td><i aria-hidden="true"></i> <a routerLink="/viewDoc/{{doctor.id}}">  {{ doctor.name }}</a></td>
                 <td>{{ doctor.position }}</td>
                 <td>{{ doctor.age }}</td>

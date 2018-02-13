@@ -8,7 +8,7 @@
     </nav>
 </div>
 
-<div class="container">
+<!-- <div class="container">
     <div class="jumbotron">
         <div *ngIf="patient">
             <h1 class="card-title">{{patient.name}}</h1>
@@ -20,4 +20,29 @@
         </div>
         <a class="btn btn-primary" (click)="goBack()">Back</a>
     </div>
+</div> -->
+
+<div class="container">
+    <table class="table table-hover table-dark" border="1">
+
+        <tr>
+            <th>Name</th>
+            <td>{{ patient.name }}</td>
+        </tr>
+
+        <tr>
+            <th>IC Number</th>
+            <td>{{ patient.ic }}</td>
+        </tr>
+
+        <tr>
+            <th>Age</th>
+            <td>{{ patient.age }}</td>
+        </tr>
+
+        <tr>
+            <th>Sex</th>
+            <td>{{ patient.sex }}</td>
+        </tr>
+    </table>
 </div>

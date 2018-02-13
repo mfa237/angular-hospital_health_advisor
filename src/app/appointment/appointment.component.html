@@ -38,8 +38,8 @@ table, tbody, tr, th {
         </thead>
 
         <tbody>
-            <tr *ngFor="let appointment of appointments">                
-                <th scope="row"></th>
+            <tr *ngFor="let appointment of appointments; let i = index">                
+                <td>{{ i+1 }}</td>
                 <td><i aria-hidden="true"></i> <a routerLink="/viewApp/{{appointment.id}}">  {{ appointment.description }}</a></td>
                 <td>{{ appointment.patient_name }}</td>
                 <td>{{ appointment.doctor_name }}</td>
