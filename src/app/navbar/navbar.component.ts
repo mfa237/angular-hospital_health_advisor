@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ROUTES } from './navbar-routes.config';
 import { MenuType } from './navbar.metadata';
 import { AngularFireAuth } from 'angularfire2/auth';
+import 'jquery';
 
 @Component({
   selector: 'navbar',
@@ -33,6 +34,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.afAuth.auth.signOut();
+    $('div#signup-form').css('display', 'none');
   }
 
 }

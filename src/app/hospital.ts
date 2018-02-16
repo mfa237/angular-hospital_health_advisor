@@ -2,6 +2,7 @@ export class Hospital {
     id : string;
     name : string;
     email : string;
-    city : string;
+    address : string;
     contact_number : string;
 }
+
