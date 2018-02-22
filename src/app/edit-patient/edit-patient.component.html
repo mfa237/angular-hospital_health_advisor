@@ -9,33 +9,33 @@
 
 <div class="container">
 
-<form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()">
 
     <div class="form-group">
-        <label>Name</label>
-        <input type="text" placeholder="Name" [(ngModel)]="patient.name" name="name" class="form-control">          
-      </div>
+      <label>Name</label>
+      <input type="text" placeholder="Name" [(ngModel)]="patient.name" name="name" class="form-control">          
+    </div>
 
-      <div class="form-group">
-          <label>IC Number</label>
-          <input type="text" placeholder="IC Number" [(ngModel)]="patient.ic" name="ic" class="form-control">            
-        </div>
+    <div class="form-group">
+      <label>IC Number</label>
+      <input type="text" placeholder="IC Number" [(ngModel)]="patient.ic" name="ic" class="form-control">            
+    </div>
 
-        <div class="form-group">
-          <label>Age</label>
-          <input type="text" placeholder="Age" [(ngModel)]="patient.age" name="age" class="form-control">            
-        </div>
+    <div class="form-group">
+      <label>Age</label>
+      <input type="text" placeholder="Age" [(ngModel)]="patient.age" name="age" class="form-control">            
+    </div>
 
-        <div class="form-group">
-          <label>Sex</label>
-          <input type="text" placeholder="Sex" [(ngModel)]="patient.sex" name="sex" class="form-control">            
-        </div>
+    <div class="form-group">
+      <label>Sex</label>
+      <input type="text" placeholder="Sex" [(ngModel)]="patient.sex" name="sex" class="form-control">            
+    </div>
 
-        <div class="form-group" style="text-align: center;">
-            <input type="submit" class="btn btn-primary" value="Submit"/>
-            <input type="submit" class="btn btn-danger" onclick="back()" value="Back"/>
-        </div>
+    <div class="form-group" style="text-align: center;">
+      <input type="submit" class="btn btn-primary" value="Submit"/>
+      <input type="submit" class="btn btn-danger" onclick="back()" value="Back"/>
+    </div>
 
-</form>
+  </form>
  
 </div>

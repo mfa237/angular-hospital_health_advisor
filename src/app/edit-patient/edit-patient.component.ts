@@ -4,7 +4,6 @@ import { Patient } from 'app/patient';
 import { PatientService } from '../patient.service';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-edit-patient',

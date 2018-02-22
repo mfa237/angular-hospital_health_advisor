@@ -4,7 +4,6 @@ import { Doctor } from 'app/doctor';
 import { DoctorService } from '../doctor.service';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-edit-doctor',

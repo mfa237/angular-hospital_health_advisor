@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseUISignInSuccess } from 'firebaseui-angular';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
 import { Appointment } from 'app/appointment';
-import { AppointmentService } from '../appointment.service';
 import { AppComponent } from 'app/app.component';
 
 @Component({
@@ -17,10 +15,9 @@ export class AppointmentComponent implements OnInit {
 
   appColRef: AngularFirestoreCollection<AppComponent>;
   appointments: Appointment[] = [];
-  appointment: Observable<Appointment>;
   userId: string;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private appointmentService: AppointmentService) {
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
     afAuth.authState.subscribe( user => {
       if (user) {
         this.userId = user.uid;

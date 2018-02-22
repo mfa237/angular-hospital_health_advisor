@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { FirebaseUISignInSuccess } from 'firebaseui-angular';
-import { Observable } from 'rxjs/Observable';
 import { Hospital } from 'app/hospital';
-import { Location } from '@angular/common';
 import 'jquery';
 
 @Component({
@@ -19,7 +17,7 @@ export class MainComponent implements OnInit {
   state: string;
   poscode: string;
   city: string;
-  hospital: Hospital  = {
+  hospital: Hospital = {
     id: '',
     name: '',
     email: '',
@@ -27,10 +25,9 @@ export class MainComponent implements OnInit {
     contact_number: ''
   };
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private location: Location) {}
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {}
 
   ngOnInit(): void {
-
     
     $('div#signup-form').css('display', 'none');
 
@@ -39,12 +36,8 @@ export class MainComponent implements OnInit {
         $('div#signup-form').css('display', 'inline');
         this.getAuthState();
       }
-    });   
+    });  
 
-    
-
-    console.log("user id 2: " + this.authState.uid);
- 
   }
 
   logout() {
@@ -68,7 +61,6 @@ export class MainComponent implements OnInit {
       })
     })
 
-   
   }
 
   getAuthState(){

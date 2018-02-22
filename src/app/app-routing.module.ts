@@ -8,7 +8,7 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
 import { AppointmentComponent } from 'app/appointment/appointment.component';
 import { AddAppointmentComponent }  from './add-appointment/add-appointment.component';
 import { EditAppointmentComponent }  from './edit-appointment/edit-appointment.component';
-import {AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
+import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
 import { AddPatientComponent } from 'app/add-patient/add-patient.component';
 import { EditPatientComponent } from 'app/edit-patient/edit-patient.component';
 import { PatientDetailsComponent } from 'app/patient-details/patient-details.component';

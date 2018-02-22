@@ -7,16 +7,6 @@
     </nav>
 </div>
 
-<style>
-
-    table, tbody, tr, th {
-        text-align: center;
-        font-family: "Times New Roman", Times, serif;
-        font-size: 18px;
-    }
-
-</style>
-
 <div class="container" style="padding-bottom: 10px;">
     <div class="panel-heading">
         <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/addDoc']">Add New Doctor</a> 
@@ -39,7 +29,6 @@
 
         <tbody>
             <tr *ngFor="let doctor of doctors; let i = index;">                
-                <!-- <th scope="row"></th> -->
                 <td>{{ i+1 }}</td>
                 <td><i aria-hidden="true"></i> <a routerLink="/viewDoc/{{doctor.id}}">  {{ doctor.name }}</a></td>
                 <td>{{ doctor.position }}</td>

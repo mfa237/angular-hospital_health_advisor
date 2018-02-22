@@ -22,7 +22,6 @@ export class DoctorDetailsComponent implements OnInit {
       this.id = params.id;
     })
     this.doctor = this.doctorService.getDoctor(this.id);
-    console.log('doctor name: ' + this.doctor.name);
   }
 
   goBack() {

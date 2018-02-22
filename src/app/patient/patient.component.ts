@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseUISignInSuccess } from 'firebaseui-angular';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
 import { Patient } from 'app/patient';
-import { PatientService} from '../patient.service';
 
 @Component({
   selector: 'app-patient',
@@ -16,10 +14,9 @@ export class PatientComponent implements OnInit {
 
   patientColRef: AngularFirestoreCollection<Patient>;
   patients: Patient[] = [];
-  patient: Observable<Patient>;
   userId: string;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private patientService: PatientService) {
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
     afAuth.authState.subscribe( user => {
       if (user) {
         this.userId = user.uid;

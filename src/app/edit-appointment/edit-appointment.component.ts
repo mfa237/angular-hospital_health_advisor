@@ -4,7 +4,6 @@ import { Appointment } from 'app/appointment';
 import { AppointmentService } from '../appointment.service';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-edit-appointment',
