@@ -6,7 +6,6 @@ import { FormControl } from '@angular/forms';
 import { Doctor } from 'app/doctor';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import 'jquery';
 
 @Component({
   selector: 'app-add-appointment',
@@ -76,14 +75,6 @@ export class AddAppointmentComponent implements OnInit {
     }
 
     this.location.back();
-  }
-
-  Choose($scope){
-    $scope.doctors = [
-      {
-        name: "halo"
-      }
-    ];
   }
 
   back() {
