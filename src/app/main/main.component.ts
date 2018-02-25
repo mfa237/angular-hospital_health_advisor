@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
     email: '',
     address: '',
     contact_number: '',
-    consultation_fee: ''
+    consultation_fee: 0
   };
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {}
