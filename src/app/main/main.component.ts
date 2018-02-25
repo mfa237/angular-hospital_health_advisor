@@ -22,7 +22,8 @@ export class MainComponent implements OnInit {
     name: '',
     email: '',
     address: '',
-    contact_number: ''
+    contact_number: '',
+    consultation_fee: ''
   };
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {}
@@ -87,7 +88,8 @@ export class MainComponent implements OnInit {
       name: this.hospital.name,
       email: this.authState.email,
       address: address,
-      contact_number : this.hospital.contact_number
+      contact_number : this.hospital.contact_number,
+      consultation_fee : this.hospital.consultation_fee
     }
 
     hospDoc.set(data)

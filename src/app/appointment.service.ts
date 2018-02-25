@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
 import { Doctor } from 'app/doctor';
 import { error } from 'util';
 import { UUID } from 'angular2-uuid';
 import { Appointment } from 'app/appointment';
 import { Patient } from 'app/patient';
+import { Hospital } from 'app/hospital';
 
 @Injectable()
 export class AppointmentService {
@@ -14,6 +14,7 @@ export class AppointmentService {
   appColRef: AngularFirestoreCollection<Appointment>;
   patientColRef: AngularFirestoreCollection<Patient>;
   doctorColRef: AngularFirestoreCollection<Doctor>;
+  hospitalColRef: AngularFirestoreCollection<Hospital>;
   appDoc: AngularFirestoreDocument<Appointment>;
   appointment: Appointment;
   userId: string;  
@@ -23,6 +24,7 @@ export class AppointmentService {
     this.appColRef = this.afs.collection('appointments');
     this.doctorColRef = this.afs.collection('doctors');
     this.patientColRef = this.afs.collection('patients');
+    this.hospitalColRef = this.afs.collection('hospitals');
 
     afAuth.authState.subscribe( user => {
       if(user){
@@ -30,7 +32,6 @@ export class AppointmentService {
         console.log('what is the user id: ' + this.userId);
       }
     })
-
   }
 
   addAppointment(appointment: Appointment){
@@ -43,6 +44,13 @@ export class AppointmentService {
 
     appointment.id = UUID.UUID();
     appointment.hospital_id = this.userId;
+
+    this.hospitalColRef.ref.where('id', '==', this.userId).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        console.log('hospital name is: ' + doc.get('name'));
+        appointment.hospital_name = doc.get('name');
+      })
+    })
 
     this.doctorColRef.ref.where('name', '==', appointment.doctor_name).get().then(snapshot => {
       snapshot.forEach(doc => {
@@ -114,8 +122,10 @@ export class AppointmentService {
           doctor_ic: doc.get('doctor_ic'),
           doctor_name: doc.get('doctor_name'),
           hospital_id: doc.get('hospital_id'),
+          hospital_name: doc.get('hospital_name'),
           date: doc.get('date'),
-          time : doc.get('time')
+          time : doc.get('time'),
+          diagnosis_price : doc.get('diagnosis_price')
         };
 
       });

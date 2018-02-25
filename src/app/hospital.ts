@@ -4,5 +4,6 @@ export class Hospital {
     email : string;
     address : string;
     contact_number : string;
+    consultation_fee : string;
 }
 

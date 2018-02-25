@@ -40,8 +40,10 @@ export class AppointmentComponent implements OnInit {
           doctor_ic: doc.get('doctor_ic'),
           doctor_name: doc.get('doctor_name'),
           hospital_id: doc.get('hospital_id'),
+          hospital_name: doc.get('hospital_name'),
           date: doc.get('date'),
-          time : doc.get('time')
+          time : doc.get('time'),
+          diagnosis_price : doc.get('diagnosis_price')
         });
 
       });

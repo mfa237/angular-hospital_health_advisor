@@ -33,8 +33,10 @@ export class EditAppointmentComponent implements OnInit {
           doctor_ic : appRef.doctor_ic,
           doctor_name : appRef.doctor_name,
           hospital_id : appRef.hospital_id,
+          hospital_name : appRef.hospital_name,
           date : appRef.date,
-          time : appRef.time
+          time : appRef.time,
+          diagnosis_price : appRef.diagnosis_price
         };    
 
       } 
