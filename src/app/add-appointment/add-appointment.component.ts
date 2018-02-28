@@ -32,7 +32,8 @@ export class AddAppointmentComponent implements OnInit {
     hospital_name: '',
     date: '',
     time: '', 
-    diagnosis_price: 0
+    diagnosis_price: 0,
+    payment_status: false
   }
 
   constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore, private appointmentService: AppointmentService, private location: Location) {

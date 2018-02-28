@@ -125,7 +125,8 @@ export class AppointmentService {
           hospital_name: doc.get('hospital_name'),
           date: doc.get('date'),
           time : doc.get('time'),
-          diagnosis_price : doc.get('diagnosis_price')
+          diagnosis_price : doc.get('diagnosis_price'),
+          payment_status : doc.get('payment_status')
         };
 
       });

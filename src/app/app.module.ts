@@ -37,6 +37,7 @@ import { PatientService } from './patient.service';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { HospitalService } from './hospital.service';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -93,7 +94,7 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     NavbarModule,
     HomeModule
   ],
-  providers: [DoctorService, AppointmentService, PatientService],
+  providers: [DoctorService, AppointmentService, PatientService, HospitalService],
   bootstrap: [AppComponent]
 })
 

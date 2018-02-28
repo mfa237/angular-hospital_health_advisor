@@ -36,7 +36,8 @@ export class EditAppointmentComponent implements OnInit {
           hospital_name : appRef.hospital_name,
           date : appRef.date,
           time : appRef.time,
-          diagnosis_price : appRef.diagnosis_price
+          diagnosis_price : appRef.diagnosis_price,
+          payment_status : appRef.payment_status
         };    
 
       } 

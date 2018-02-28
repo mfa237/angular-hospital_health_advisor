@@ -11,4 +11,5 @@ export class Appointment {
     date : string;
     time : string;
     diagnosis_price : number;
+    payment_status : boolean;
 }

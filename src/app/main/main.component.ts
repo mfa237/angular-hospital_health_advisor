@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { FirebaseUISignInSuccess } from 'firebaseui-angular';
 import { Hospital } from 'app/hospital';
+import { HospitalService } from 'app/hospital.service';
 import 'jquery';
 
 @Component({
@@ -17,6 +18,9 @@ export class MainComponent implements OnInit {
   state: string;
   poscode: string;
   city: string;
+  data: Hospital;
+  hospitalColRef: AngularFirestoreCollection<Hospital>;
+  hospName: string;
   hospital: Hospital = {
     id: '',
     name: '',
@@ -26,17 +30,45 @@ export class MainComponent implements OnInit {
     consultation_fee: 0
   };
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {}
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private hospService: HospitalService) {
+    this.hospitalColRef = this.afs.collection('hospitals');
+  }
 
   ngOnInit(): void {
     
     $('div#signup-form').css('display', 'none');
+   // $('div#banner').css('display', 'none');
 
     this.afAuth.authState.subscribe(auth => {
       if(auth) {
         $('div#signup-form').css('display', 'inline');
-        this.getAuthState();
-      }
+        //this.getAuthState();
+        this.authState = auth;
+
+        this.hospitalColRef.ref.where('id', '==', auth.uid).get().then(snapshot => {
+          snapshot.forEach(doc => {
+            this.data = {
+              id: doc.get('id'),
+              name: doc.get('name'),
+              email: doc.get('email'),
+              address: doc.get('address'),
+              contact_number: doc.get('contact_number'),
+              consultation_fee: doc.get('consultation_fee'),
+            }
+
+            this.hospName = this.data.name;
+
+          })
+        }).catch(error => {
+          console.log(error);
+        })
+
+        this.updateUserData();
+      } else {
+        console.log('not login');
+        this.hospName = "";
+      }    
+      
     });  
 
   }
@@ -58,24 +90,25 @@ export class MainComponent implements OnInit {
         if(doc.get('name') != null){
           console.log("hosp name: " + doc.get('name'));
           $('div#signup-form').css('display', 'none');
+         // $('div#banner').css('display', 'inline');
         } 
       })
     })
 
   }
 
-  getAuthState(){
-    return this.afAuth.authState.subscribe((auth => {
-      if(auth) {
-        console.log('login' + auth);
-        this.authState = auth;
-        this.updateUserData();
-      } else {
-        console.log('not login');
-      }    
+  // getAuthState(){
+  //   return this.afAuth.authState.subscribe((auth => {
+  //     if(auth) {
+  //       console.log('login' + auth);
+  //       this.authState = auth;
+  //       this.updateUserData();
+  //     } else {
+  //       console.log('not login');
+  //     }    
 
-    }))
-  }
+  //   }))
+  // }
 
   onSubmit() {
 
@@ -83,16 +116,11 @@ export class MainComponent implements OnInit {
 
     const hospDoc: AngularFirestoreDocument<any> = this.afs.doc(`hospitals/${this.authState.uid}`);
 
-    const data: Hospital = {
-      id: this.authState.uid,
-      name: this.hospital.name,
-      email: this.authState.email,
-      address: address,
-      contact_number : this.hospital.contact_number,
-      consultation_fee : this.hospital.consultation_fee
-    }
+    this.hospital.id = this.authState.uid;
+    this.hospital.email = this.authState.email;
+    this.hospital.address = address;
 
-    hospDoc.set(data)
+    hospDoc.set(this.hospital)
     $('div#signup-form').css('display', 'none');
   }
 }

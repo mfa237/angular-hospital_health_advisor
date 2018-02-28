@@ -23,6 +23,8 @@
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
+                <th scope="col">Diagnosis Price</th>
+                <th scope="col">Payment Status</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -35,6 +37,12 @@
                 <td>{{ appointment.doctor_name }}</td>
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.time }}</td>
+                <td>{{ appointment.diagnosis_price }}</td>
+                <td>
+                    <div *ngIf="appointment.payment_status;then successful else failed"></div>
+                    <ng-template #successful>Paid</ng-template>
+                    <ng-template #failed>Unpaid</ng-template>
+                </td>
                 <td><a routerLink="/editApp/{{appointment.id}}"><i class="fas fa-pencil-alt"></i></a></td>
             </tr>           
         </tbody>
