@@ -30,7 +30,8 @@ export class EditPatientComponent implements OnInit {
           ic : patientRef.ic,
           age : patientRef.age,
           sex : patientRef.sex,
-          hospital_id : patientRef.hospital_id
+          hospital_id : patientRef.hospital_id,
+          payment_status : patientRef.payment_status
         };    
 
       } 

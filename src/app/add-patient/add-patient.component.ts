@@ -18,7 +18,8 @@ export class AddPatientComponent implements OnInit {
     ic : '',
     age : null,
     sex : '',
-    hospital_id : ''
+    hospital_id : '',
+    payment_status : true
   };
 
   constructor(private patientService: PatientService, private location: Location) { }

@@ -38,7 +38,8 @@ export class PatientComponent implements OnInit {
           ic: doc.get('ic'),
           age: doc.get('age'),
           sex: doc.get('sex'),
-          hospital_id : doc.get('hospital_id')
+          hospital_id : doc.get('hospital_id'),
+          payment_status : doc.get('payment_status')
         });
 
       });
