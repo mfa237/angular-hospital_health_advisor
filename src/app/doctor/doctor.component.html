@@ -7,36 +7,39 @@
     </nav>
 </div>
 
-<div class="container" style="padding-bottom: 10px;">
-    <div class="panel-heading">
-        <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/addDoc']">Add New Doctor</a> 
+<div class="container" id="doctorList">
+
+    <div class="container" style="padding-bottom: 10px;">
+        <div class="panel-heading">
+            <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/addDoc']">Add New Doctor</a> 
+        </div>
     </div>
-</div>
 
-<div class="container">
-    <table class="table table-hover table-dark" border="1">
-        <thead>
-            <tr>
-                <th scope="col">No.</th>
-                <th scope="col">Name</th>
-                <th scope="col">Position</th>
-                <th scope="col">Age</th>
-                <th scope="col">Email</th>
-                <th scope="col">Contact Number</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
+    <div class="container">
+        <table class="table table-hover table-dark" border="1">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contact Number</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
 
-        <tbody>
-            <tr *ngFor="let doctor of doctors; let i = index;">                
-                <td>{{ i+1 }}</td>
-                <td><i aria-hidden="true"></i> <a routerLink="/viewDoc/{{doctor.id}}">  {{ doctor.name }}</a></td>
-                <td>{{ doctor.position }}</td>
-                <td>{{ doctor.age }}</td>
-                <td>{{ doctor.email }}</td>
-                <td>{{ doctor.contact_number }}</td>
-                <td><a routerLink="/editDoc/{{doctor.id}}"><i class="fas fa-pencil-alt"></i></a></td>
-            </tr>           
-        </tbody>
-    </table>
+            <tbody>
+                <tr *ngFor="let doctor of doctors; let i = index;">                
+                    <td>{{ i+1 }}</td>
+                    <td><i aria-hidden="true"></i> <a routerLink="/viewDoc/{{doctor.id}}">  {{ doctor.name }}</a></td>
+                    <td>{{ doctor.position }}</td>
+                    <td>{{ doctor.age }}</td>
+                    <td>{{ doctor.email }}</td>
+                    <td>{{ doctor.contact_number }}</td>
+                    <td><a routerLink="/editDoc/{{doctor.id}}"><i class="fas fa-pencil-alt"></i></a></td>
+                </tr>           
+            </tbody>
+        </table>
+    </div>
 </div>

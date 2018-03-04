@@ -7,45 +7,47 @@
     </nav>
 </div>
 
-<div class="container" style="padding-bottom: 10px;">
-    <div class="panel-heading">
-        <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/addApp']">Add New Appointment</a> 
+<div class="container" id="appList">
+
+    <div class="container" style="padding-bottom: 10px;">
+        <div class="panel-heading">
+            <a class="pull-right btn btn-primary btn-sm" [routerLink]="['/addApp']">Add New Appointment</a> 
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table table-hover table-dark" border="1">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Diagnosis Price</th>
+                    <th scope="col">Payment Status</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let appointment of appointments; let i = index">                
+                    <td>{{ i+1 }}</td>
+                    <td><i aria-hidden="true"></i> <a routerLink="/viewApp/{{appointment.id}}">  {{ appointment.description }}</a></td>
+                    <td>{{ appointment.patient_name }}</td>
+                    <td>{{ appointment.doctor_name }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+                    <td>{{ appointment.diagnosis_price }}</td>
+                    <td>
+                        <div *ngIf="appointment.payment_status;then successful else failed"></div>
+                        <ng-template #successful>Paid</ng-template>
+                        <ng-template #failed>Unpaid</ng-template>
+                    </td>
+                    <td><a routerLink="/editApp/{{appointment.id}}"><i class="fas fa-pencil-alt"></i></a></td>
+                </tr>           
+            </tbody>
+        </table>
     </div>
 </div>
-
-<div class="container">
-    <table class="table table-hover table-dark" border="1">
-        <thead>
-            <tr>
-                <th scope="col">No.</th>
-                <th scope="col">Description</th>
-                <th scope="col">Patient Name</th>
-                <th scope="col">Doctor Name</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Diagnosis Price</th>
-                <th scope="col">Payment Status</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr *ngFor="let appointment of appointments; let i = index">                
-                <td>{{ i+1 }}</td>
-                <td><i aria-hidden="true"></i> <a routerLink="/viewApp/{{appointment.id}}">  {{ appointment.description }}</a></td>
-                <td>{{ appointment.patient_name }}</td>
-                <td>{{ appointment.doctor_name }}</td>
-                <td>{{ appointment.date }}</td>
-                <td>{{ appointment.time }}</td>
-                <td>{{ appointment.diagnosis_price }}</td>
-                <td>
-                    <div *ngIf="appointment.payment_status;then successful else failed"></div>
-                    <ng-template #successful>Paid</ng-template>
-                    <ng-template #failed>Unpaid</ng-template>
-                </td>
-                <td><a routerLink="/editApp/{{appointment.id}}"><i class="fas fa-pencil-alt"></i></a></td>
-            </tr>           
-        </tbody>
-    </table>
-</div>
-

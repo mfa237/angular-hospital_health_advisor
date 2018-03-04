@@ -4,6 +4,8 @@ import { FirebaseUISignInSuccess } from 'firebaseui-angular';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Appointment } from 'app/appointment';
 import { AppComponent } from 'app/app.component';
+import { Doctor } from 'app/doctor';
+import 'jquery';
 
 @Component({
   selector: 'app-appointment',
@@ -18,9 +20,11 @@ export class AppointmentComponent implements OnInit {
   userId: string;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
-    afAuth.authState.subscribe( user => {
-      if (user) {
-        this.userId = user.uid;
+    afAuth.authState.subscribe(auth => {
+      if (auth) {
+        this.userId = auth.uid;
+      } else {
+        $('div#appList').css('display', 'none');
       }
     });
    }

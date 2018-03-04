@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseUISignInSuccess } from 'firebaseui-angular';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Patient } from 'app/patient';
+import 'jquery';
 
 @Component({
   selector: 'app-patient',
@@ -17,15 +18,16 @@ export class PatientComponent implements OnInit {
   userId: string;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
-    afAuth.authState.subscribe( user => {
-      if (user) {
-        this.userId = user.uid;
+    afAuth.authState.subscribe(auth => {
+      if (auth) {
+        this.userId = auth.uid;
+      } else {
+        $('div#patientList').css('display', 'none');
       }
     });
   }
 
   ngOnInit(): void {
-    this.afAuth.authState.subscribe(d => console.log(d));
 
     this.patientColRef = this.afs.collection('patients');
     this.patientColRef.ref.where('hospital_id', '==', this.userId).get().then(snapshot => {
