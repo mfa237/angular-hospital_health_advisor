@@ -7,6 +7,7 @@ import { UUID } from 'angular2-uuid';
 import { Appointment } from 'app/appointment';
 import { Patient } from 'app/patient';
 import { Hospital } from 'app/hospital';
+import { WaitingList } from './waiting_list';
 
 @Injectable()
 export class AppointmentService {
@@ -15,9 +16,12 @@ export class AppointmentService {
   patientColRef: AngularFirestoreCollection<Patient>;
   doctorColRef: AngularFirestoreCollection<Doctor>;
   hospitalColRef: AngularFirestoreCollection<Hospital>;
+  waitingListColRef: AngularFirestoreCollection<WaitingList>;
   appDoc: AngularFirestoreDocument<Appointment>;
+  waitingListDoc: AngularFirestoreDocument<WaitingList>;
   appointment: Appointment;
   userId: string;  
+  waitingListPatientId: string;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
     
@@ -25,6 +29,7 @@ export class AppointmentService {
     this.doctorColRef = this.afs.collection('doctors');
     this.patientColRef = this.afs.collection('patients');
     this.hospitalColRef = this.afs.collection('hospitals');
+    this.waitingListColRef = this.afs.collection('waiting_list');
 
     afAuth.authState.subscribe( user => {
       if(user){
@@ -73,6 +78,13 @@ export class AppointmentService {
       console.log(error);
     })
 
+    this.waitingListColRef.ref.where('patient_name', '==', appointment.patient_name).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.waitingListPatientId = doc.get('id');
+        console.log('id in waiting list is: ' + this.waitingListPatientId);
+      })
+    })
+
     this.appDoc = this.afs.doc<Appointment>(`appointments/${appointment.id}`);
 
     this.appDoc.update(appointment).then(() => {
@@ -80,7 +92,12 @@ export class AppointmentService {
     }).catch((error) => {
       this.appDoc.set(appointment);
       console.log('added successfully');
+      this.waitingListDoc = this.afs.doc<WaitingList>(`waiting_list/${this.waitingListPatientId}`);
+      this.waitingListDoc.delete().then(() => {
+      console.log('this patient is deleted successfully in waiting list');
     })
+    })
+    
   }
 
   editAppointment(appointment: Appointment, id: string){
