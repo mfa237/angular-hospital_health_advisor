@@ -36,7 +36,7 @@ export class AddAppointmentComponent implements OnInit {
     payment_status: false
   }
 
-  constructor(private afAuth: AngularFireAuth,private afs: AngularFirestore, private appointmentService: AppointmentService, private location: Location) {
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private appointmentService: AppointmentService, private location: Location) {
     afAuth.authState.subscribe( user => {
       if (user) {
         this.userId = user.uid;
@@ -44,7 +44,6 @@ export class AddAppointmentComponent implements OnInit {
     });
   }
    
-
   ngOnInit(): void {
     this.afAuth.authState.subscribe(d => console.log(d));
 
