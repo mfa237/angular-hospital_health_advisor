@@ -15,7 +15,7 @@ import 'jquery';
 
 export class AppointmentComponent implements OnInit {
 
-  appColRef: AngularFirestoreCollection<AppComponent>;
+  appColRef: AngularFirestoreCollection<Appointment>;
   appointments: Appointment[] = [];
   userId: string;
 

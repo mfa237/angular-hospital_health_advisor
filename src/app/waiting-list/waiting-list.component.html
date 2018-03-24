@@ -1,0 +1,39 @@
+<div class="container">
+    <nav aria-label="breadcrumb" style="background-color: lightblue;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Waiting List</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container" id="appList">
+
+    <div class="container">
+        <table class="table table-hover table-dark" border="1">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">IC Number</th>
+                    <th scope="col">Sex</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let list of lists; let i = index">                
+                    <td>{{ i+1 }}</td>
+                    <td><i aria-hidden="true"></i> <a routerLink="/addApp">{{ list.patient_name }}</a></td>
+                    <td>{{ list.patient_ic }}</td>
+                    <td>{{ list.patient_sex }}</td>
+                    <td>{{ list.doctor_name }}</td>
+                    <td>{{ list.date }}</td>
+                    <td>{{ list.time }}</td>
+                </tr>           
+            </tbody>
+        </table>
+    </div>
+</div>

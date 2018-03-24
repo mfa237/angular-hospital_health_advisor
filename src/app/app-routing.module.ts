@@ -13,6 +13,7 @@ import { AddPatientComponent } from 'app/add-patient/add-patient.component';
 import { EditPatientComponent } from 'app/edit-patient/edit-patient.component';
 import { PatientDetailsComponent } from 'app/patient-details/patient-details.component';
 import { PatientComponent } from 'app/patient/patient.component';
+import { WaitingListComponent } from './waiting-list/waiting-list.component';
 
 const routes: Routes = [
   { path: 'page', loadChildren: 'app/doctor/doctor.module#DoctorModule' },
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'video', component: VideoComponent },
   { path: 'doctors', component: DoctorComponent },
   { path: 'appointments', component: AppointmentComponent},
-  { path: 'patients', component: PatientComponent}
+  { path: 'patients', component: PatientComponent},
+  { path: 'waitinglists', component: WaitingListComponent}
 ];
 
 @NgModule({
