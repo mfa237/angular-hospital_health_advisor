@@ -92,12 +92,12 @@ export class AppointmentService {
     }).catch((error) => {
       this.appDoc.set(appointment);
       console.log('added successfully');
+      
       this.waitingListDoc = this.afs.doc<WaitingList>(`waiting_list/${this.waitingListPatientId}`);
       this.waitingListDoc.delete().then(() => {
-      console.log('this patient is deleted successfully in waiting list');
+        console.log('this patient is deleted successfully in waiting list');
+      })
     })
-    })
-    
   }
 
   editAppointment(appointment: Appointment, id: string){

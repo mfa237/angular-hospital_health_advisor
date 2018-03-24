@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'addDoc', component: AddDoctorComponent },
   { path: 'editDoc/:id', component: EditDoctorComponent },
   { path: 'viewDoc/:id', component: DoctorDetailsComponent },
-  { path: 'addApp', component: AddAppointmentComponent },
+  { path: 'addApp/:id', component: AddAppointmentComponent },
   { path: 'editApp/:id', component: EditAppointmentComponent },
   { path: 'viewApp/:id', component: AppointmentDetailsComponent },
   { path: 'addPatient', component: AddPatientComponent },
