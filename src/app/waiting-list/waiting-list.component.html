@@ -25,7 +25,7 @@
             <tbody>
                 <tr *ngFor="let list of lists; let i = index">                
                     <td>{{ i+1 }}</td>
-                    <td><i aria-hidden="true"></i> <a routerLink="/addApp">{{ list.appointment_desc }}</a></td>
+                    <td><i aria-hidden="true"></i> <a routerLink="/assignApp/{{list.id}}">{{ list.appointment_desc }}</a></td>
                     <td>{{ list.patient_name }}</td>
                     <td>{{ list.doctor_name }}</td>
                     <td>{{ list.date }}</td>
