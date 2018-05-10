@@ -32,9 +32,8 @@ export class WaitingListComponent implements OnInit {
 
         this.lists.push({
           id: doc.get('id'),
+          appointment_desc: doc.get('appointment_desc'),
           patient_name: doc.get('patient_name'),
-          patient_ic: doc.get('patient_ic'),
-          patient_sex: doc.get('patient_sex'),
           doctor_name: doc.get('doctor_name'),
           hospital_id: doc.get('hospital_id'),
           date: doc.get('date'),
