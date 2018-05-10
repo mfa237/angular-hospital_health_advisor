@@ -36,6 +36,7 @@ export class WaitingListComponent implements OnInit {
           patient_ic: doc.get('patient_ic'),
           patient_sex: doc.get('patient_sex'),
           doctor_name: doc.get('doctor_name'),
+          hospital_id: doc.get('hospital_id'),
           date: doc.get('date'),
           time: doc.get('time')
         });
